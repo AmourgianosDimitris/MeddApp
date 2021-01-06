@@ -1,0 +1,34 @@
+{% extends 'services/base.html' %}
+
+{% block title %}
+{% for d in depart %}
+{{ d.title }}
+{% endfor %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+{% for d in depart %}
+  <p><strong>ΤΙΤΛΟΣ</strong></p>
+  <p>{{ d.title }}</p>
+
+  <br>
+  <p><strong>ΕΙΣΑΓΩΓΗ</strong></p>
+  <p>{{ d.introduction }}</p>
+
+  <br>
+  <p><strong>ΙΑΤΡΙΚΕΣ ΥΠΗΡΕΣΙΕΣ</strong></p>
+  <p>{{ d.services }}</p>
+
+  <br>
+  <p><strong>ΠΑΘΗΣΕΙΣ</strong></p>
+  <p>{{ d.diseases }}</p>
+
+  <br>
+  <p><strong>ΓΙΑΤΙ ΕΜΑΣ</strong></p>
+  <p>{{ d.preference }}</p>
+
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends '../cal/base.html' %}
+{% block title %}Logout{% endblock %}
+
+{% block content %}
+<div class="container">
+  <br>
+    <h2>You are logout</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <p><a href="{% url 'logout' %}">logout</a></p>
+    </form>
+    <br>
+</div>
+
+</div>
+{% endblock %}

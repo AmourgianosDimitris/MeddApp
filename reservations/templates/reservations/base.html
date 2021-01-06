@@ -1,0 +1,161 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{% static 'services/img/logo.png' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'services/css/medapp.css' %}">
+    <link rel="stylesheet" href="{% static 'services/css/layout.css' %}" type="text/css" media="all">
+    {% block style %} {% endblock %}
+
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <div class="wrapper row1">
+      <header id="header" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <div id="logo" class="one_half first">
+          <img src="../../static/services/img/logo.png" class="img-fluid one_half first">
+          <h1 class="logoname one_half"><span>Med</span>App</h1>
+        </div>
+        <div class="one_half">
+
+          <ul class="nospace clear">
+            <li class="one_third first">
+              <div class="block clear"><i class="fas fa-phone"></i> <span><strong class="block">Call Us:</strong> +00 (123) 456 7890</span> </div>
+            </li>
+            <li class="one_third">
+              <div class="block clear"><i class="far fa-clock"></i> <span><strong class="block"> Mon. - Sat.:</strong> 08.00am - 18.00pm</span> </div>
+            </li>
+            <li class="one_third ">
+              <div class="block clear"><i class="far fa-envelope"></i> <span><strong class="block"> Email:</strong> contact@medapp.gr</span> </div>
+            </li>
+          </ul>
+        </div>
+        </div>
+        <!-- ################################################################################################ -->
+      </header>
+      <nav id="mainav" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <ul class="clear">
+          <li class="active"><a href="{% url 'services:index' %}">Home</a></li>
+          <li class="nav-item active">
+              <a class="nav-link" href="index.html"><i class="fas fa-home"></i> <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="dropdown nav-item ">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Κρατήσεις
+              </a>
+              <div class="dropdown-menu nav-item" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item nav-link" href="04.html">
+                  Νέα Κράτηση
+                </a
+                <a class="dropdown-item nav-link" href="04.html">
+                  Ιστορικό Κρατήσεων
+                </a>
+              </div>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="03.html">Ημερολόγιο</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'services:departments' %}">Τμήματα</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="blog.html">About us</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact us</a>
+          </li>
+        </ul>
+        <!-- ################################################################################################ -->
+      </nav>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- ΥΠΟΣΕΛΙΔΟ -->
+    <!-- <footer>
+
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <div class="wrapper row4 footer-wrapper">
+      <footer id="footer" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <div class="one_third first">
+          <h1 class="logoname"><span>Med</span>App</h1>
+          <p class="btmspace-30">Sem nam et erat nec eros elementum gravida proin bibendum diam sed congue sagittis metus risus rutrum mauris sed euismod nisl purus vel leo phasellus nunc erat cursus aliquet [<a href="#">&hellip;</a>]</p>
+          <ul class="faico clear">
+            <li><a class="faicon-dribble" href="#"><i class="fab fa-dribbble"></i></a></li>
+            <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+            <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+            <li><a class="faicon-linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+            <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a class="faicon-vk" href="#"><i class="fab fa-vk"></i></a></li>
+          </ul>
+        </div>
+        <div class="one_third">
+          <h6 class="heading">Massa hendrerit bibendum</h6>
+          <ul class="nospace linklist">
+            <li><a href="#">Tincidunt vel vulputate egestas</a></li>
+            <li><a href="#">Leo sed porttitor accumsan arcu</a></li>
+            <li><a href="#">Aenean ac urna et leo posuere</a></li>
+            <li><a href="#">Pretium suspendisse ac elit ut</a></li>
+          </ul>
+        </div>
+        <div class="one_third">
+          <h6 class="heading">Etiam auctor dignissim</h6>
+          <p class="nospace btmspace-15">Leo integer sem nisl mollis ut ornare eu lobortis eget ante mauris tempor.</p>
+          <form method="post" action="#">
+            <fieldset>
+              <legend>Newsletter:</legend>
+              <input class="btmspace-15" type="text" value="" placeholder="Name">
+              <input class="btmspace-15" type="text" value="" placeholder="Email">
+              <button type="submit" value="submit">Submit</button>
+            </fieldset>
+          </form>
+        </div>
+        <!-- ################################################################################################ -->
+      </footer>
+    </div>
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <div class="wrapper row5">
+      <div id="copyright" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
+        <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+        <!-- ################################################################################################ -->
+      </div>
+    </div>
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+
+    </footer>
+    <!-- footer -->
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="services/js/jquery.backtotop.js"></script>
+    <script src="services/js/jquery.mobilemenu.js"></script>
+  </body>
+</html>

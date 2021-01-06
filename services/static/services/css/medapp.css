@@ -1,0 +1,212 @@
+/****************/
+/* GOOGLE FONTS */
+/****************/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&subset=greek');
+
+/***************/
+/* HTML + BODY */
+/***************/
+
+html, footer {
+    background-color:#fff; /*! rgb(61, 61, 61) */
+}
+
+body {
+    background-color: #f5f5f5; /*! rgb(245, 245, 245) */
+    margin-top: 4rem; /*! navbar height = 64px (4rem) */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
+  }
+
+.btn {
+    border-radius: 0;
+}
+.btn-secondary {
+    background-color: grey;
+    border-color: grey;
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+}
+.aspro {
+    background-color: white;
+}
+.img-caption {
+    background-color: grey;
+    color: white;
+}
+
+/**********/
+/* NAVBAR */
+/**********/
+
+.bg-dark {
+    background-color: black !important;
+}
+
+.navbar-brand {
+    font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 2rem;
+	font-weight: 700;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+}
+
+.logo-image{
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: -6px;
+}
+
+/********/
+/* MAIN */
+/********/
+
+.dexia_stili {
+    padding-left: 0;
+}
+
+    @media (max-width:991.98px) {
+        .dexia_stili {
+            padding-left: 15px;
+        }
+    }
+
+.stili_12 {
+    padding-right: 7.5px;
+    padding-left: 7.5px;
+}
+
+    @media (max-width:991.98px) {
+        .stili_12 {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+    }
+
+    .container_img {
+      width: 100%;
+      position: relative;
+      font-family: Arial;
+    }
+
+    .text-block {
+      position: absolute;
+      z-index: 10;
+      position: absolute;
+      bottom: 60px;
+      right: 17%;
+
+      color: black;
+      padding-left: 20px;
+      padding-right: 20px;
+
+      text-align: right;
+    }
+
+    .titlos {
+      font-size: 72px;
+      /* text-shadow:0 1px 8px rgba(0,0,0,0.9) */
+    }
+
+    .ypotitlos_1 {
+      text-align: left;
+      font-size: 24px;
+      padding-right: 2%;
+    }
+    .ypotitlos_2 {
+      text-align: left;
+      font-size: 24px;
+      padding-right: 20px;
+    }
+
+/**********/
+/* FOOTER */
+/**********/
+
+/* Βρίσκεσαι εδώ */
+
+.footer-top {
+    background-color: black;
+}
+
+.breadcrumb {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    padding: 0;
+    margin: 0.5rem 0;
+    background-color: black;
+    border-radius: 0;
+}
+
+.breadcrumb a {
+    color: white;
+}
+
+.breadcrumb-item.active {
+    color: white;
+}
+
+hr {
+    border-color: #e0e0e0; /*! rgb(224, 224, 224) */
+}
+
+/* footer-mid */
+
+.footer-mid {
+    background-color: #3d3d3d;
+}
+
+.footer-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: white;
+}
+
+.footer-title a {
+    color: #c2c2c2;
+}
+
+.footer-title a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-title li {
+    font-weight: 300;
+}
+
+ul.footer_list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.footer-bottom {
+    background-color: #3d3d3d;
+    border-top: 1px solid black;
+}
+
+/* Copyright */
+
+.footer-copyright {
+    font-family:'Open Sans Condensed', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: #c2c2c2; /*! rgb(194, 194, 194) */
+    margin-top: 1rem;
+}
+.footer-copyright a {
+    color: #c2c2c2;
+}
+.footer-copyright a:hover {
+    color: white;
+    text-decoration: none;
+}

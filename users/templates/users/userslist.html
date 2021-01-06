@@ -1,0 +1,65 @@
+{% extends 'services/base.html' %}
+
+{% block title %}
+{{ user.first_name }}  {{ user.last_name }} - Καθηγητές
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <nav>
+      <div class="nav nav-tabs type-nav mb-3" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link" href="{% url 'cal:events' %}">Αιτήσεις</a>
+        <a class="nav-item nav-link" href="{% url 'courses:assignment-list' %}">Μεταθέσεις</a>
+        <a class="nav-item nav-link" href="{% url 'courses:assistant-list' %}">Συνεργάτες</a>
+         {% if user.is_staff %}
+           <a class="nav-item nav-link" href="{% url 'courses:course-list' %}">Μαθήματα</a>
+           <a class="nav-item nav-link" href="{% url 'courses:professor-list' %}">Καθηγητές</a>
+           <a class="nav-item nav-link active" href="{% url 'users:user-list' %}">Χρήστες</a>
+         {% endif %}
+      </div>
+    </nav>
+    <a class="btn btn-students" href="{% url 'users:user-create' %}">Προσθήκη</a>
+    <table class="table mt-3">
+      <thead class="bg-students text-white">
+        <tr>
+          <th scope="col">Επίθετο</th>
+          <th scope="col">Όνομα</th>
+          <th scope="col">E-mail</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for usr in users %}
+      <tr class="table-secondary">
+        <td>{{ usr.last_name }}</td>
+        <td>{{ usr.first_name }}</td>
+        <td>{{ usr.email }}</td>
+        <td><a href="{% url 'users:user-update' usr.id %}" class="btn btn-students btn-sm float-right">Επεξεργασία</a></td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+    {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'+3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-students mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+
+    {% endif %}
+  </div>
+{% endblock %}

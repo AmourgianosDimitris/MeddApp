@@ -1,0 +1,20 @@
+{% extends 'services/base.html' %}
+
+
+{% block title %}Σύνδεση {% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <form method="POST">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Σύνδεση
+          <a class="mb-3 btn btn-students right" href="{% url 'users:user-signup' %}">Δημιουργία</a></legend>
+        {{ form }}
+      </fieldset>
+      <div class="form-group">
+        <button class="btn btn-students" type="submit">Σύνδεση</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+/* Δημοτική Βιβλιοθήκη Νέας Φιλαδελφείας - Νέας Χαλκηδόνας */
+
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700&subset=greek');
+
+body {
+    background: url('../img/full-65.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+        -moz-background-size: cover;
+            -o-background-size: cover;
+                background-size: cover;
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+.bg-dark {
+    background-color: black !important;
+}
+
+.navbar-brand {
+    font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 2rem;
+	font-weight: 700;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    -webkit-transform: scale(1, 1.2);
+        -ms-transform: scale(1, 1.2);
+            transform: scale(1, 1.2);
+}
+
+h1 {
+    font-family: Lobster;
+    font-size: 5rem;
+}
+
+.center { 
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+}

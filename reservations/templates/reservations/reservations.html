@@ -1,0 +1,79 @@
+{% extends 'services/base.html' %}
+
+{% block title %}
+{{ user.username }} - Αιτήσεις
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row mt-2">
+      <div class="col">
+        <a class="btn btn-students" href="{% url 'reservations:reservation-create' %}">Προσθήκη</a>
+        <form method="GET" action="{% url 'reservations:reservations' %}">
+          <label for="status" class="ml-1">Κατάσταση: </label>
+          <select name="status" id="status">
+            <option value="ALL" {% if not status %} selected {% endif %}>All</option>
+            <option value="PENDING" {% if status == 'PENDING' %} selected {% endif %}>Pending</option>
+            <option value="ACCEPTED" {% if status == 'ACCEPTED' %} selected {% endif %}>Accepted</option>
+            <option value="DENIED" {% if status == 'DENIED' %} selected {% endif %}>Denied</option>
+            <option value="CANCELED" {% if status == 'CANCELED' %} selected {% endif %}>Canceled</option>
+          </select>
+          <button class="btn btn-students ml-1" type="submit">Αναζήτηση</button>
+        </form>
+      </div>
+    </div>
+    <table class="table mt-3">
+      <thead class="bg-students text-white">
+        <tr>
+          <th scope="col">Όνοματεπωνυμο</th>
+          <th scope="col">Τμήμα</th>
+          <th scope="col">Ημερομηνία</th>
+          <th scope="col">Ώρα</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for reservation in reservations %}
+        {% if reservation.status == 'PENDING' %}
+          <tr class="table-info">
+        {% elif evereservationnt.status == 'ACCEPTED' %}
+          <tr class="table-success">
+        {% elif reservation.status == 'DENIED' %}
+          <tr class="table-danger">
+        {% elif reservation.status == 'CANCELED' %}
+          <tr class="table-secondary">
+        {% endif %}
+            <td>{{ reservation.patient }}</td>
+            <td>{{ reservation.department }}</td>
+            <td>{{ reservation.eventdate }}</td>
+            <td>{{ reservation.start_time }}</td>
+            <td><a href="{% url 'reservations:reservation-update' reservation.id %}" class="btn btn-students btn-sm">Επεξεργασία</a></td>
+          </tr>
+      </div>
+      {% endfor %}
+      </tbody>
+    </table>
+
+    {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'+3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-students mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+
+    {% endif %}
+  </div>
+{% endblock %}

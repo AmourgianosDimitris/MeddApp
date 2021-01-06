@@ -1,0 +1,31 @@
+{% extends 'services/base.html' %}
+
+{% block title %}
+Τμήματα
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+{% for d in depart %}
+
+<div class="card">
+  <h5 class="card-header">{{ d.title }}</h5>
+  <div class="card-body">
+    <h5 class="card-title">Λίγα λόγια για το {{ d.title }}</h5>
+    <ul class="nospace meta">
+      <li><i class="fas fa-user"></i> <a href="">Admin</a></li>
+    </ul>
+    <br>
+    <p class="card-text">{{ d.introduction }}[<a href="{% url 'services:department' d.title %}">&hellip;</a>]</p>
+    <a href="{% url 'services:department' d.title %}" class="btn btn-primary">ΠΕΡΙΣΣΟΤΕΡΑ</a>
+  </div>
+</div>
+<br>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

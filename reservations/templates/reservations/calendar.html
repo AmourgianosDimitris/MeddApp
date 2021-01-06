@@ -1,0 +1,15 @@
+{% extends 'services/base.html' %}
+{% load static %}
+
+{% block title %}
+Calendar
+{% endblock %}
+
+{% block content %}
+<div class="clearfix mt-5">
+	<a class="btn btn-students left" href="{% url 'reservation:calendar' %}?{{ prev_month }}"> Προηγούμενος Μήνας </a>
+	<a class="btn btn-students left" href="{% url 'reservation:calendar' %}?{{ next_month }}"> Επόμενος Μήνας </a>
+</div>
+
+{{ calendar }}
+{% endblock %}

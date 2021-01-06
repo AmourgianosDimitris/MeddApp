@@ -1,0 +1,89 @@
+{% extends 'services/base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <nav>
+      <div class="nav nav-tabs type-nav mb-3" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link" href="{% url 'cal:events' %}">Αιτήσεις</a>
+        <a class="nav-item nav-link" href="{% url 'courses:assignment-list' %}">Μεταθέσεις</a>
+        <a class="nav-item nav-link" href="{% url 'courses:assistant-list' %}">Συνεργάτες</a>
+         {% if user.is_staff %}
+           <a class="nav-item nav-link active" href="{% url 'courses:course-list' %}">Μαθήματα</a>
+           <a class="nav-item nav-link" href="{% url 'courses:professor-list' %}">Καθηγητές</a>
+           <a class="nav-item nav-link" href="{% url 'users:user-list' %}">Χρήστες</a>
+         {% endif %}
+      </div>
+    </nav>
+    <div class="row mt-2">
+      <div class="col">
+        <a class="btn btn-students float-left" href="{% url 'courses:course-create' %}">Προσθήκη</a>
+        {% if user.is_staff %}
+          <a class="btn btn-students right" href="{% url 'courses:course-download' %}">Download</a>
+        {% endif %}
+        <form method="GET" action="{% url 'courses:course-list' %}">
+          <label for="semester" class="ml-1">Εξάμηνο: </label>
+          <select name="semester" id="semester">
+            <option value="ALL" {% if not status %} selected {% endif %}>All</option>
+            <option value="1" {% if semester == '1' %} selected {% endif %}>1</option>
+            <option value="2" {% if semester == '2' %} selected {% endif %}>2</option>
+            <option value="3" {% if semester == '3' %} selected {% endif %}>3</option>
+            <option value="4" {% if semester == '4' %} selected {% endif %}>4</option>
+            <option value="5" {% if semester == '5' %} selected {% endif %}>5</option>
+            <option value="6" {% if semester == '6' %} selected {% endif %}>6</option>
+            <option value="7" {% if semester == '7' %} selected {% endif %}>7</option>
+            <option value="8" {% if semester == '8' %} selected {% endif %}>8</option>
+          </select>
+          <label for="graduation" class="ml-1">Κύκλος Σπουδών: </label>
+          <select name="graduation" id="graduation">
+            <option value="ALL" {% if not room %} selected {% endif %}>All</option>
+            <option value="undergraduate" {% if graduation == 'undergraduate' %} selected {% endif %}>undergraduate</option>
+            <option value="postgraduate" {% if graduation == 'postgraduate' %} selected {% endif %}>postgraduate</option>
+          </select>
+          <button class="btn btn-students ml-1" type="submit">Αναζήτηση</button>
+        </form>
+      </div>
+    </div>
+    <table class="table mt-3">
+      <thead class="bg-students text-white">
+        <tr>
+          <th scope="col">Τίτλος</th>
+          <th scope="col">Εξάμηνο</th>
+          <th scope="col">Κύκλος Σπουδών</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for course in courses %}
+      <tr class="table-secondary">
+        <td>{{ course.title }}</td>
+        <td>{{ course.semester }}</td>
+        <td>{{ course.graduation }}</td>
+        <td><a href="{% url 'courses:course-update' course.id %}" class="btn btn-students btn-sm float-right">Επεξεργασία</a></td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+    {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'+3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-students mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "services/base.html" %}
+
+{% block title %}
+  {% if edit %}
+    Επεξεργασία Αίτησης
+  {% else %}
+    Νέα Αίτηση
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <form method="POST">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        {% if edit %}
+          <legend class="border-bottom mb-4">Επεξεργασία Αίτησης</legend>
+        {% else %}
+          <legend class="border-bottom mb-4">Νέα Αίτηση</legend>
+        {% endif %}
+        {{ form }}
+      </fieldset>
+      <div class="form-group">
+        <a class="btn btn-outline-secondary" href="{% url 'reservations:reservations' %}">Πίσω</a>
+        {% if edit %}
+          <a class="btn btn-outline-danger" href="{% url 'reservations:reservation-delete' object.id %}">Διαγραφή</a>
+        {% endif %}
+        <button class="btn btn-students" type="submit">Υποβολή</button>
+        {% if user.is_staff %}
+          {% if edit %}
+            <div class="float-right">
+              {% if object.status == 'PENDING' %}
+                <button class="btn btn-outline-danger" type="submit" name="status" value=0>Απόρριψη</button>
+                <button class="btn btn-outline-success" type="submit" name="status" value=1>Αποδοχή</button>
+              {% endif %}
+              {% if object.status == 'ACCEPTED' %}
+                <button class="btn btn-outline-secondary" type="submit" name="status" value=2>Ακύρωση</button>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+    </form>
+  </div>
+{% endblock content %}

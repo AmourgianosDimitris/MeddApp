@@ -1,0 +1,19 @@
+{% extends 'services/base.html' %}
+
+
+{% block title %}Δημιουργία Λογαριασμού{% endblock %}
+
+{% block content %}
+<div class="container">
+  <br>
+    <h2>Δημιουργία Λογαριασμού</h2>
+    <form method="post" id="signup">
+      {% csrf_token %}
+      {{ form }}
+      <button class="btn btn-students" type="submit">Εγγραφή</button>
+    </form>
+    <br>
+
+</div>
+
+{% endblock %}
