@@ -44,51 +44,57 @@
         </div>
         <!-- ################################################################################################ -->
       </header>
-      <nav id="mainav" class="hoc clear">
-        <!-- ################################################################################################ -->
-        <ul class="clear">
-          <li class="active"><a href="{% url 'services:index' %}"><i class="fas fa-home"></i> Home</a></li>
-          <li class="dropdown nav-item ">
-              <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit"></i>
-                Κρατήσεις
-              </a>
-              <div class="dropdown-menu nav-item" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item nav-link" href="{% url 'reservations:reservation-create' %}">
-                  Νέα Κράτηση
+    
+      <div class="container nav-wrapper">
+      <nav id="mainav" class="clear navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="clear navbar-nav">
+            <li class="active"><a href="{% url 'services:index' %}"><i class="fas fa-home"></i> Home</a></li>
+            <li class="dropdown nav-item ">
+                <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit"></i>
+                  Κρατήσεις
                 </a>
-                <a class="dropdown-item nav-link" href="{% url 'reservations:reservations' %}">
-                  Ιστορικό Κρατήσεων
-                </a>
-              </div>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link active" href="{% url 'reservations:calendar' %}"><i class="fas fa-calendar-alt"></i> Ημερολόγιο</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="{% url 'services:departments' %}"><i class="fas fa-building"></i> Τμήματα</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="{% url 'services:about-us' %}"><i class="fas fa-info"></i> About us</a>
-          </li>
-          {% if user.is_authenticated %}
-              <li class="nav-item right">
-                  <a class="nav-link right" href="{% url 'users:profile' %}"><i class="fas fa-user"></i> {% block user %} {{ user.username }} {% endblock %} </a>
-              </li>
-          {% else %}
-              <li class="right">
-                <a href="{% url 'users:signin'  %}" class="btn btn-students btn-s right">Είσοδος</a>
-              </li>
-          {% endif %}
-        </ul>
-        <!-- ################################################################################################ -->
+                <div class="dropdown-menu nav-item" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item nav-link" href="{% url 'reservations:reservation-create' %}">
+                    Νέα Κράτηση
+                  </a>
+                  <a class="dropdown-item nav-link" href="{% url 'reservations:reservations' %}">
+                    Ιστορικό Κρατήσεων
+                  </a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="{% url 'reservations:calendar' %}"><i class="fas fa-calendar-alt"></i> Ημερολόγιο</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'services:departments' %}"><i class="fas fa-building"></i> Τμήματα</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'services:about-us' %}"><i class="fas fa-info"></i> About us</a>
+            </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item right">
+                    <a class="nav-link right" href="{% url 'users:profile' %}"><i class="fas fa-user"></i> {% block user %} {{ user.username }} {% endblock %} </a>
+                </li>
+            {% else %}
+                <li class="right">
+                  <a href="{% url 'users:signin'  %}" class="btn btn-students btn-s right">Είσοδος</a>
+                </li>
+            {% endif %}
+          </ul>
+        </div>
       </nav>
+      </div>
     </div>
 
     {% block content %}
     {% endblock %}
 
     <!-- ΥΠΟΣΕΛΙΔΟ -->
-    <!-- <footer>
+    <!-- <footer> -->
 
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->

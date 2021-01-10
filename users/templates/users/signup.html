@@ -4,16 +4,29 @@
 {% block title %}Δημιουργία Λογαριασμού{% endblock %}
 
 {% block content %}
-<div class="container">
-  <br>
-    <h2>Δημιουργία Λογαριασμού</h2>
-    <form method="post" id="signup">
-      {% csrf_token %}
-      {{ form }}
-      <button class="btn btn-students" type="submit">Εγγραφή</button>
-    </form>
-    <br>
 
+<div class="container">
+
+  <div class="card login-wrapper">
+    <div class="card-header">
+      <div class="eggrafi"><h3><a href="/signin">Σύνδεση</a></h3></div>
+      <div class="sindesi"><h3><a href="/signup">Εγγραφή</a></h3></div>
+    </div>
+    <div class="card-body">
+      <div class="card-text login-inner">
+        
+        <form id="signup" method="POST">
+          {% csrf_token %}
+          {{ form }}
+          <div class="form-group btn-wrapper">
+            <button class="btn btn-students" type="submit">Εγγραφή</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+  
 </div>
 
 {% endblock %}

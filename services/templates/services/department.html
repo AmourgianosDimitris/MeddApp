@@ -10,24 +10,29 @@
 <div class="container">
 
 {% for d in depart %}
-  <p><strong>ΤΙΤΛΟΣ</strong></p>
-  <p>{{ d.title }}</p>
 
-  <br>
-  <p><strong>ΕΙΣΑΓΩΓΗ</strong></p>
-  <p>{{ d.introduction }}</p>
 
-  <br>
-  <p><strong>ΙΑΤΡΙΚΕΣ ΥΠΗΡΕΣΙΕΣ</strong></p>
-  <p>{{ d.services }}</p>
+  <div class="card department-wrapper">
+    <h3 class="card-header">{{ d.title }}</h3>
+    <div class="card-body">
+      <div class="card-text department-inner">
+        
+        <h4>Εισαγωγή</h4>
+        <p>{{ d.introduction }}</p>
 
-  <br>
-  <p><strong>ΠΑΘΗΣΕΙΣ</strong></p>
-  <p>{{ d.diseases }}</p>
+        <h4>Ιατρικές υπηρεσίες</h4>
+        <p>{{ d.services }}</p>
+      
+        <h4>Παθήσεις</h4>
+        <p>{{ d.diseases }}</p>
+      
+        <h4>Γιατί εμάς</h4>
+        <p>{{ d.preference }}</p>
 
-  <br>
-  <p><strong>ΓΙΑΤΙ ΕΜΑΣ</strong></p>
-  <p>{{ d.preference }}</p>
+      </div>
+    </div>
+  </div>
+
 
 {% endfor %}
 </div>
