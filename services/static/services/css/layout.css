@@ -209,7 +209,7 @@ nav ul, nav ol{margin:0; padding:0; list-style:none;}
 #mainav ul ul{z-index:9999; position:absolute; width:180px; text-transform:none; text-align:left;}
 #mainav ul ul ul{left:180px; top:0;}
 #mainav li{display:block; float:left; position:relative; margin:0; padding:0;}
-#mainav li:last-child{margin-right:0;}
+#mainav li:last-child{margin-right:0;float:right;}
 #mainav li li{width:100%; margin:0;}
 #mainav li a{display:block; padding:20px;}
 #mainav li li a{border:solid; border-width:0 0 1px 0;}
